@@ -1,13 +1,13 @@
 import React from 'react';
 import { TextInput } from '../../../components/TextInput';
-import { useFilmPageContext } from '../contexts/FilmsPageContext';
-import { filterFilms } from '../contexts/FilmsPageContext/actions';
+import { getFilmPageAction, getFilmPageState } from '../../../store/reducers/filmPageReducer';
 import classes from './index.module.scss';
 
 export const SearchBarContainer: React.FC = () => {
-  const { state, dispatch } = useFilmPageContext();
+  const { searchText } = getFilmPageState();
+  const { dispatchSearch } = getFilmPageAction();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    filterFilms(dispatch, event.target.value);
+    dispatchSearch(event.target.value);
   };
 
   return (
@@ -16,7 +16,7 @@ export const SearchBarContainer: React.FC = () => {
         name="searchBar"
         placeholderText="Search films by title"
         onChange={handleChange}
-        value={state.searchText}
+        value={searchText}
       />
     </div>
   );

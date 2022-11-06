@@ -1,13 +1,12 @@
 import React from 'react';
-import { useFilmPageContext } from '../contexts/FilmsPageContext';
+import { FilmData } from '../../../hooks/useGetFilms';
+import { getFilmPageState } from '../../../store/reducers/filmPageReducer';
 import classes from './index.module.scss';
 
 export const FilmDetails: React.FC = () => {
-  const {
-    state: { films, selectedFilmId }
-  } = useFilmPageContext();
-  const selectedFilm = selectedFilmId
-    ? films.find((film) => film.episode_id === selectedFilmId)
+  const { films, selectedFilmId } = getFilmPageState();
+  const selectedFilm: FilmData | undefined = selectedFilmId
+    ? films.find((film: FilmData) => film.episode_id === selectedFilmId)
     : undefined;
 
   return (
