@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FilmData } from '../../hooks/useGetFilms';
 import { FilmsPageState, StoreName, StoreState } from '../types';
 
+const initialState: FilmsPageState = {
+  films: [],
+  selectedFilmId: undefined,
+  searchText: ''
+};
+
 const filmPageSlice = createSlice({
   name: StoreName.FILM_PAGE,
-  initialState: {
-    films: [],
-    selectedFilmId: undefined,
-    searchText: ''
-  },
+  initialState: initialState,
   reducers: {
     init: (state: FilmsPageState, action: { payload: FilmData[] }) => {
       state.films = action.payload;
