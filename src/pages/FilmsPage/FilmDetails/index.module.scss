@@ -1,0 +1,19 @@
+.detailsWrapper {
+  padding: 0.5rem 2rem 0 1rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.default {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

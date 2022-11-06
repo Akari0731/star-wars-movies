@@ -1,17 +1,13 @@
 import axios from 'axios';
 
-interface GetFilmsResponse {
-  data: Films;
-}
-
-interface Films {
+export interface Films {
   count: number;
-  next?: any;
-  previous?: any;
-  results: Result[];
+  next?: number;
+  previous?: number;
+  results: FilmData[];
 }
 
-interface Result {
+export interface FilmData {
   title: string;
   episode_id: number;
   opening_crawl: string;
@@ -28,7 +24,8 @@ interface Result {
   url: string;
 }
 
-export const useGetFilms = async (): Promise<GetFilmsResponse> => {
-  const { data } = await axios.get<GetFilmsResponse>('http://swapi.dev/api/films');
+export const useGetFilms = async (): Promise<Films> => {
+  const { data } = await axios.get<Films>('http://swapi.dev/api/films');
+
   return data;
 };

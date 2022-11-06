@@ -1,0 +1,33 @@
+@value white, black, yellow from "./styles/colors.module.scss";
+@value small, normal, medium, large from "./styles/fonts.module.scss";
+@import './styles/mixins.module.scss';
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: Merriweather;
+  font-size: normal;
+  @include small {
+    font-size: small;
+  }
+}
+
+.title {
+  color: yellow;
+  font-family: Starjhol;
+  font-size: large;
+  text-align: center;
+
+  @include small {
+    font-size: medium;
+  }
+}
+
+.appWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}

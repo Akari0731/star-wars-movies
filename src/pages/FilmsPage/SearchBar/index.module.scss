@@ -1,0 +1,9 @@
+@import '../../../styles/mixins.module.scss';
+
+.searchBar {
+  padding: 0 4rem 0 2rem;
+
+  @include small {
+    padding: 0 3rem 0 2rem;
+  }
+}
