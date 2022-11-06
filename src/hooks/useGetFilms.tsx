@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export interface Films {
   count: number;
-  next?: number;
-  previous?: number;
+  next?: null;
+  previous?: null;
   results: FilmData[];
 }
 
