@@ -1,4 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import { TableHeader } from '.';
 import { SortOrder } from '..';

@@ -32,13 +32,13 @@ export function Table<T>({ headers, data, rowProps }: TableProps<T>) {
     <div>
       <table>
         <thead>
-          <tr>
+          <tr data-testid="table-header-tr">
             {headers.map((header, i) => (
               <TableHeader key={`header${i}`} {...header} />
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody data-testid="table-body">
           {data.map((d, i) => {
             const onRowClick = () => rowProps.onRowClick(d);
             const cells = rowProps.getCells(d);
