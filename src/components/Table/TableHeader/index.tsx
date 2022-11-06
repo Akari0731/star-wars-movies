@@ -8,13 +8,15 @@ export const TableHeader: React.FC<TableHeaderProps> = ({ text, sort, width, onC
     <th
       style={{ width: width ? width : '' }}
       className={onClick ? classes.sortHeader : ''}
-      onClick={() => (onClick ? onClick() : {})}>
+      onClick={() => (onClick ? onClick() : {})}
+      data-testid="table-header">
       {text}
       {sort ? (
         <img
           src={Arrow}
           alt="Arrow"
           className={`${classes.arrow} ${sort === SortOrder.ASC ? classes.rotate : ''}`}
+          data-testid="sort-arrow"
         />
       ) : null}
     </th>
