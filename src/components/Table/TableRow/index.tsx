@@ -9,7 +9,10 @@ interface TableRowProps {
 
 export const TableRow: React.FC<TableRowProps> = ({ onRowClick, cells, isSelected }) => {
   return (
-    <tr className={`${classes.row} ${isSelected ? classes.isSelected : ''}`} onClick={onRowClick}>
+    <tr
+      className={`${classes.row} ${isSelected ? classes.isSelected : ''}`}
+      onClick={onRowClick}
+      data-testid="table-row">
       {cells.map((cell, i) => (
         <td key={i}>{cell}</td>
       ))}
