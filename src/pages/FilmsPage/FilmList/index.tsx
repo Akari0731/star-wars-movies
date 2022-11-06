@@ -19,14 +19,14 @@ export const FilmList: React.FC = () => {
     switch (sortKey) {
       case SortKey.EPISODE:
         if (sortOrder === SortOrder.ASC) {
-          return a.episode_id > b.episode_id ? -1 : 1;
+          return a.episode_id < b.episode_id ? -1 : 1;
         }
-        return a.episode_id < b.episode_id ? -1 : 1;
+        return a.episode_id > b.episode_id ? -1 : 1;
       case SortKey.YEAR:
         if (sortOrder === SortOrder.ASC) {
-          return a.release_date > b.release_date ? -1 : 1;
+          return a.release_date < b.release_date ? -1 : 1;
         }
-        return a.release_date < b.release_date ? -1 : 1;
+        return a.release_date > b.release_date ? -1 : 1;
     }
   };
   const isTitleIncludeSearch = (film: FilmData): boolean =>

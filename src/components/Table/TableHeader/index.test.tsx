@@ -113,12 +113,12 @@ describe('TableHeader', () => {
     expect(sortArrowEl).toBeTruthy();
   });
 
-  test('have Arrow image has rotate class when SortOrder.ASC is given', () => {
+  test('have Arrow image has rotate class when SortOrder.DESC is given', () => {
     renderWithProviders(
       <table>
         <thead>
           <tr>
-            <TableHeader text="text" sort={SortOrder.ASC} />
+            <TableHeader text="text" sort={SortOrder.DESC} />
           </tr>
         </thead>
       </table>
@@ -128,12 +128,12 @@ describe('TableHeader', () => {
     expect(sortArrowEl?.className).toBe('arrow rotate');
   });
 
-  test('have Arrow image has no rotate class when SortOrder.DESC is given', () => {
+  test('have Arrow image has no rotate class when SortOrder.ASC is given', () => {
     renderWithProviders(
       <table>
         <thead>
           <tr>
-            <TableHeader text="text" sort={SortOrder.DESC} />
+            <TableHeader text="text" sort={SortOrder.ASC} />
           </tr>
         </thead>
       </table>

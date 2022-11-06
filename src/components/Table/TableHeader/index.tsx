@@ -15,7 +15,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({ text, sort, width, onC
         <img
           src={Arrow}
           alt="Arrow"
-          className={`${classes.arrow} ${sort === SortOrder.ASC ? classes.rotate : ''}`}
+          className={`${classes.arrow} ${sort === SortOrder.DESC ? classes.rotate : ''}`}
           data-testid="sort-arrow"
         />
       ) : null}
