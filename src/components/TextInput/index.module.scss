@@ -1,0 +1,22 @@
+@value blue, black from "../../styles/colors.module.scss";
+@value normal from "../../styles/fonts.module.scss";
+
+.input {
+  width: 100%;
+  height: 3rem;
+  font-size: normal;
+  padding: 0 0.5rem;
+  outline: none;
+  transition: 0.25s;
+  border: 4px solid black;
+  border-radius: 0.5rem;
+  font-family: Merriweather;
+
+  &:focus-within {
+    border: 4px solid blue;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}

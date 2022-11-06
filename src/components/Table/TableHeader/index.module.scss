@@ -1,0 +1,23 @@
+@value white, darkblue from "../../../styles/colors.module.scss";
+
+th {
+  text-align: left;
+  vertical-align: middle;
+  min-width: 7rem;
+  padding: 0.5rem;
+
+  &.sortHeader:hover {
+    cursor: pointer;
+    background-color: darkblue;
+  }
+}
+
+.arrow {
+  height: 1.25rem;
+  vertical-align: bottom;
+  color: white;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}

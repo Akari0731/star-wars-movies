@@ -1,0 +1,18 @@
+@value darkblue, blue from "../../../styles/colors.module.scss";
+
+.row {
+  td {
+    height: 2.5rem;
+    text-align: left;
+    padding: 0.5rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: darkblue;
+  }
+
+  &.isSelected {
+    background-color: blue;
+  }
+}
