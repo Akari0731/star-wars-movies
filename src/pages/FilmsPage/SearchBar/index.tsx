@@ -4,10 +4,21 @@ import { getFilmPageAction, getFilmPageState } from '../../../store/reducers/fil
 import classes from './index.module.scss';
 
 export const SearchBarContainer: React.FC = () => {
-  const { searchText } = getFilmPageState();
-  const { dispatchSearch } = getFilmPageAction();
+  const { searchText, films, selectedFilmId } = getFilmPageState();
+  const { dispatchSearch, dispatchSelect } = getFilmPageAction();
+  const resetSelectedFilm = (newSearchText: string) => {
+    const selectedFilmTitle = films.find((film) => film.episode_id === selectedFilmId)?.title ?? '';
+    const showSelectedFilm = selectedFilmTitle
+      .toLowerCase()
+      .includes(newSearchText.toLocaleLowerCase());
+
+    if (!showSelectedFilm) {
+      dispatchSelect(undefined);
+    }
+  };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatchSearch(event.target.value);
+    resetSelectedFilm(event.target.value);
   };
 
   return (
