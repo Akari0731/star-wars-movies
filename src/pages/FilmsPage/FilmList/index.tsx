@@ -15,42 +15,40 @@ export const FilmList: React.FC = () => {
   const { films, searchText, selectedFilmId } = getFilmPageState();
   const { dispatchSelect } = getFilmPageAction();
 
-  const filmsToDisplay: FilmData[] = films
-    .filter((film: FilmData) =>
-      searchText ? film.title.toLowerCase().includes(searchText.toLocaleLowerCase()) : true
-    )
-    .sort((a: FilmData, b: FilmData) => {
-      switch (sortKey) {
-        case SortKey.EPISODE:
-          if (sortOrder === SortOrder.ASC) {
-            return a.episode_id > b.episode_id ? -1 : 1;
-          }
-          return a.episode_id < b.episode_id ? -1 : 1;
-        case SortKey.YEAR:
-          if (sortOrder === SortOrder.ASC) {
-            return a.release_date > b.release_date ? -1 : 1;
-          }
-          return a.release_date < b.release_date ? -1 : 1;
-      }
-    });
+  const sortOrderBySortKey = (a: FilmData, b: FilmData): -1 | 1 => {
+    switch (sortKey) {
+      case SortKey.EPISODE:
+        if (sortOrder === SortOrder.ASC) {
+          return a.episode_id > b.episode_id ? -1 : 1;
+        }
+        return a.episode_id < b.episode_id ? -1 : 1;
+      case SortKey.YEAR:
+        if (sortOrder === SortOrder.ASC) {
+          return a.release_date > b.release_date ? -1 : 1;
+        }
+        return a.release_date < b.release_date ? -1 : 1;
+    }
+  };
+  const isTitleIncludeSearch = (film: FilmData): boolean =>
+    searchText ? film.title.toLowerCase().includes(searchText.toLocaleLowerCase()) : true;
+  const filmsToDisplay: FilmData[] = films.filter(isTitleIncludeSearch).sort(sortOrderBySortKey);
 
+  const onSort = (key: SortKey) => {
+    return sortKey === key
+      ? setSortOrder(sortOrder === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC)
+      : setSortKey(key);
+  };
   const headers: TableHeaderProps[] = [
     {
       text: 'Episode',
       sort: sortKey === SortKey.EPISODE ? sortOrder : undefined,
-      onClick: () =>
-        sortKey === SortKey.EPISODE
-          ? setSortOrder(sortOrder === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC)
-          : setSortKey(SortKey.EPISODE)
+      onClick: () => onSort(SortKey.EPISODE)
     },
     { text: 'Title', width: '15rem' },
     {
       text: 'Year',
       sort: sortKey === SortKey.YEAR ? sortOrder : undefined,
-      onClick: () =>
-        sortKey === SortKey.YEAR
-          ? setSortOrder(sortOrder === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC)
-          : setSortKey(SortKey.YEAR)
+      onClick: () => onSort(SortKey.YEAR)
     }
   ];
 
