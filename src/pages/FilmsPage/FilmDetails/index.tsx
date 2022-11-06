@@ -13,12 +13,16 @@ export const FilmDetails: React.FC = () => {
     <div className={classes.detailsWrapper}>
       {selectedFilm ? (
         <div className={classes.details}>
-          <h3 className={classes.title}>{selectedFilm.title}</h3>
-          <p>{selectedFilm.opening_crawl}</p>
-          <h5>Directed by: {selectedFilm.director}</h5>
+          <h3 className={classes.title} data-testid="film-title">
+            {selectedFilm.title}
+          </h3>
+          <p data-testid="film-opening-crawl">{selectedFilm.opening_crawl}</p>
+          <h5 data-testid="film-director">Directed by: {selectedFilm.director}</h5>
         </div>
       ) : (
-        <div className={classes.default}>No movie selected</div>
+        <div className={classes.default} data-testid="no-movie-selected">
+          No movie selected
+        </div>
       )}
     </div>
   );
