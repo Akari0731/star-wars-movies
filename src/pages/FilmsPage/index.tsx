@@ -6,7 +6,7 @@ import classes from './index.module.scss';
 
 export const FilmsPage: React.FC = () => {
   return (
-    <div className={classes.pageWrapper}>
+    <div className={classes.pageWrapper} data-testid="film-page">
       <SearchBarContainer />
       <div className={classes.contents}>
         <FilmList />
