@@ -57,6 +57,7 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.2.2",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
@@ -80,7 +81,7 @@
     },
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.tsx",
-      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+      "\\.(css|less|scss|sss|styl)$": "identity-obj-proxy"
     }
   }
 }
